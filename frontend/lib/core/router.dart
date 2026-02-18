@@ -7,6 +7,7 @@ import '../features/auth/auth_screen.dart';
 import '../features/challenge/create_challenge_screen.dart';
 import '../features/camera/camera_screen.dart';
 import '../features/oath/oath_screen.dart';
+import '../features/about/about_screen.dart';
 import '../features/mission/mission_model.dart';
 import '../features/auth/auth_provider.dart';
 
@@ -52,6 +53,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           final mission = state.extra as Mission?;
           return CameraScreen(mission: mission);
         },
+      ),
+      GoRoute(
+        path: '/about',
+        builder: (context, state) => const AboutScreen(),
       ),
     ],
   );

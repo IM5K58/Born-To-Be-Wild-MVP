@@ -95,6 +95,24 @@ class LandingScreen extends ConsumerWidget {
                               height: 1.6,
                             ),
                           ),
+                          const SizedBox(height: 20),
+                          GestureDetector(
+                            onTap: () => context.push('/about'),
+                            child: Row(
+                              children: [
+                                Text(
+                                  '자세히 알아보기',
+                                  style: TextStyle(
+                                    color: Colors.red.shade300,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(width: 4),
+                                Icon(Icons.arrow_forward, color: Colors.red.shade300, size: 14),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
