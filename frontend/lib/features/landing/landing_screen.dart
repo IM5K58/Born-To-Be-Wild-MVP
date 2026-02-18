@@ -282,43 +282,127 @@ class _HowItWorksSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final steps = [
-      {'icon': '✍️', 'title': '서약', 'desc': '챌린지를 선택하고 보증금을 설정합니다'},
-      {'icon': '🔒', 'title': '잠금', 'desc': '보증금이 스마트 금고에 잠깁니다'},
-      {'icon': '📸', 'title': '인증', 'desc': '매일 사진으로 미션을 인증합니다'},
-      {'icon': '🏆', 'title': '정산', 'desc': '성공 시 보증금 전액 반환'},
+      {
+        'icon': '✍️',
+        'title': '서약',
+        'desc': '챌린지를 선택하고 보증금을 설정합니다',
+        'route': '/about/oath',
+        'color': Colors.red,
+      },
+      {
+        'icon': '🔒',
+        'title': '잠금',
+        'desc': '보증금이 스마트 금고에 잠깁니다',
+        'route': '/about/lock',
+        'color': Colors.orange,
+      },
+      {
+        'icon': '📸',
+        'title': '인증',
+        'desc': '매일 사진으로 미션을 인증합니다',
+        'route': '/about/verify',
+        'color': Colors.amber,
+      },
+      {
+        'icon': '🏆',
+        'title': '정산',
+        'desc': '성공 시 보증금 전액 반환',
+        'route': '/about/settlement',
+        'color': Colors.green,
+      },
     ];
 
     return Row(
       children: steps.map((step) {
+        final color = step['color'] as Color;
+        final route = step['route'] as String;
         return Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-              decoration: BoxDecoration(
-                color: const Color(0xFF1A1F25),
-                border: Border.all(color: Colors.white.withOpacity(0.06)),
-              ),
-              child: Column(
-                children: [
-                  Text(step['icon']!, style: const TextStyle(fontSize: 24)),
-                  const SizedBox(height: 8),
-                  Text(
-                    step['title']!,
-                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    step['desc']!,
-                    style: TextStyle(color: Colors.grey[600], fontSize: 10),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
+            child: _HowItWorksCard(
+              icon: step['icon'] as String,
+              title: step['title'] as String,
+              desc: step['desc'] as String,
+              color: color,
+              route: route,
             ),
           ),
         );
       }).toList(),
+    );
+  }
+}
+
+class _HowItWorksCard extends StatefulWidget {
+  final String icon;
+  final String title;
+  final String desc;
+  final Color color;
+  final String route;
+
+  const _HowItWorksCard({
+    required this.icon,
+    required this.title,
+    required this.desc,
+    required this.color,
+    required this.route,
+  });
+
+  @override
+  State<_HowItWorksCard> createState() => _HowItWorksCardState();
+}
+
+class _HowItWorksCardState extends State<_HowItWorksCard> {
+  bool _isPressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => context.push(widget.route),
+      onTapDown: (_) => setState(() => _isPressed = true),
+      onTapUp: (_) => setState(() => _isPressed = false),
+      onTapCancel: () => setState(() => _isPressed = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        curve: Curves.easeOut,
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
+        decoration: BoxDecoration(
+          color: _isPressed
+              ? widget.color.withOpacity(0.1)
+              : const Color(0xFF1A1F25),
+          border: Border.all(
+            color: _isPressed
+                ? widget.color.withOpacity(0.5)
+                : Colors.white.withOpacity(0.06),
+          ),
+        ),
+        child: Column(
+          children: [
+            Text(widget.icon, style: const TextStyle(fontSize: 24)),
+            const SizedBox(height: 8),
+            Text(
+              widget.title,
+              style: TextStyle(
+                color: _isPressed ? widget.color : Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              widget.desc,
+              style: TextStyle(color: Colors.grey[600], fontSize: 10),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 8),
+            Icon(
+              Icons.arrow_forward,
+              color: widget.color.withOpacity(0.5),
+              size: 12,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

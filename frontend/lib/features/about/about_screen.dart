@@ -466,24 +466,28 @@ class _HowItWorksSection extends StatelessWidget {
         'title': '서약을 맺어라',
         'desc': '챌린지를 고르고 보증금을 설정한다.\n이 순간부터 계약이 시작된다.',
         'color': Colors.red,
+        'route': '/about/oath',
       },
       {
         'num': '02',
         'title': '보증금을 잠궈라',
         'desc': '네 돈이 금고에 잠긴다.\n챌린지가 끝나기 전엔 꺼낼 수 없다.',
         'color': Colors.orange,
+        'route': '/about/lock',
       },
       {
         'num': '03',
         'title': '매일 증명하라',
         'desc': '사진으로 인증한다.\n핑계 없다. 오늘도 해야 한다.',
         'color': Colors.amber,
+        'route': '/about/verify',
       },
       {
         'num': '04',
         'title': '결과를 받아라',
         'desc': '완주하면 보증금 전액 반환.\n실패하면? 소각이다.',
         'color': Colors.green,
+        'route': '/about/settlement',
       },
     ];
 
@@ -503,18 +507,84 @@ class _HowItWorksSection extends StatelessWidget {
               height: 1.2,
             ),
           ),
-          const SizedBox(height: 32),
-          ...steps.map((step) => Padding(
-            padding: const EdgeInsets.only(bottom: 20),
+          const SizedBox(height: 8),
+          Text(
+            '각 단계를 눌러 자세히 알아보세요.',
+            style: TextStyle(
+              color: Colors.grey[600],
+              fontSize: 13,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+          const SizedBox(height: 24),
+          ...steps.map((step) => _StepCard(
+            num: step['num'] as String,
+            title: step['title'] as String,
+            desc: step['desc'] as String,
+            color: step['color'] as Color,
+            route: step['route'] as String,
+          )),
+        ],
+      ),
+    );
+  }
+}
+
+class _StepCard extends StatefulWidget {
+  final String num;
+  final String title;
+  final String desc;
+  final Color color;
+  final String route;
+
+  const _StepCard({
+    required this.num,
+    required this.title,
+    required this.desc,
+    required this.color,
+    required this.route,
+  });
+
+  @override
+  State<_StepCard> createState() => _StepCardState();
+}
+
+class _StepCardState extends State<_StepCard> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 14),
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _isHovered = true),
+        onExit: (_) => setState(() => _isHovered = false),
+        child: GestureDetector(
+          onTap: () => context.push(widget.route),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.easeOut,
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              color: _isHovered
+                  ? widget.color.withOpacity(0.08)
+                  : widget.color.withOpacity(0.04),
+              border: Border.all(
+                color: _isHovered
+                    ? widget.color.withOpacity(0.5)
+                    : widget.color.withOpacity(0.15),
+                width: _isHovered ? 1.5 : 1,
+              ),
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  step['num'] as String,
+                  widget.num,
                   style: TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.w900,
-                    color: (step['color'] as Color).withOpacity(0.3),
+                    color: widget.color.withOpacity(_isHovered ? 0.5 : 0.3),
                     height: 1,
                   ),
                 ),
@@ -525,29 +595,63 @@ class _HowItWorksSection extends StatelessWidget {
                     children: [
                       const SizedBox(height: 4),
                       Text(
-                        step['title'] as String,
+                        widget.title,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w800,
-                          color: step['color'] as Color,
+                          color: widget.color,
                         ),
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        step['desc'] as String,
+                        widget.desc,
                         style: TextStyle(
                           color: Colors.grey[500],
                           fontSize: 14,
                           height: 1.7,
                         ),
                       ),
+                      const SizedBox(height: 8),
+                      AnimatedOpacity(
+                        opacity: _isHovered ? 1.0 : 0.5,
+                        duration: const Duration(milliseconds: 200),
+                        child: Row(
+                          children: [
+                            Text(
+                              '자세히 보기',
+                              style: TextStyle(
+                                color: widget.color,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                            const SizedBox(width: 4),
+                            Icon(
+                              Icons.arrow_forward,
+                              color: widget.color,
+                              size: 12,
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
+                  ),
+                ),
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  transform: Matrix4.translationValues(
+                      _isHovered ? 4 : 0, 0, 0),
+                  child: Icon(
+                    Icons.chevron_right,
+                    color: widget.color.withOpacity(_isHovered ? 0.8 : 0.3),
+                    size: 24,
                   ),
                 ),
               ],
             ),
-          )),
-        ],
+          ),
+        ),
       ),
     );
   }

@@ -8,6 +8,10 @@ import '../features/challenge/create_challenge_screen.dart';
 import '../features/camera/camera_screen.dart';
 import '../features/oath/oath_screen.dart';
 import '../features/about/about_screen.dart';
+import '../features/about/detail/oath_detail_screen.dart';
+import '../features/about/detail/lock_detail_screen.dart';
+import '../features/about/detail/verify_detail_screen.dart';
+import '../features/about/detail/settlement_detail_screen.dart';
 import '../features/mission/mission_model.dart';
 import '../features/auth/auth_provider.dart';
 
@@ -57,6 +61,22 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/about',
         builder: (context, state) => const AboutScreen(),
+      ),
+      GoRoute(
+        path: '/about/oath',
+        builder: (context, state) => const OathDetailScreen(),
+      ),
+      GoRoute(
+        path: '/about/lock',
+        builder: (context, state) => const LockDetailScreen(),
+      ),
+      GoRoute(
+        path: '/about/verify',
+        builder: (context, state) => const VerifyDetailScreen(),
+      ),
+      GoRoute(
+        path: '/about/settlement',
+        builder: (context, state) => const SettlementDetailScreen(),
       ),
     ],
   );
