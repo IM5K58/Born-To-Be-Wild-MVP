@@ -5,6 +5,8 @@ class Challenge {
   final String status;
   final String? startAt;
   final String? endAt;
+  final String? failureRule;
+  final String? donateTarget;
   final Deposit? deposit;
 
   Challenge({
@@ -14,6 +16,8 @@ class Challenge {
     required this.status,
     this.startAt,
     this.endAt,
+    this.failureRule,
+    this.donateTarget,
     this.deposit,
   });
 
@@ -25,6 +29,8 @@ class Challenge {
       status: json['status'],
       startAt: json['start_at'],
       endAt: json['end_at'],
+      failureRule: json['failure_rule'],
+      donateTarget: json['donate_target'],
       deposit: json['deposit'] != null ? Deposit.fromJson(json['deposit']) : null,
     );
   }

@@ -117,12 +117,12 @@ class LandingScreen extends ConsumerWidget {
 
                     const SizedBox(height: 12),
 
-                    // 내 챌린지 현황 카드
+                    // 오늘의 챌린지 현황 카드
                     _MenuCard(
-                      icon: Icons.dashboard,
+                      icon: Icons.today,
                       iconColor: Colors.cyan,
-                      title: '내 챌린지 현황',
-                      subtitle: '진행 중인 챌린지와 오늘의 미션을 확인하세요',
+                      title: '오늘의 챌린지 현황',
+                      subtitle: '오늘 아직 인증하지 않은 챌린지를 확인하세요',
                       onTap: () => context.push('/dashboard'),
                     ),
 

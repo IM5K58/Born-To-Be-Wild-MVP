@@ -25,6 +25,7 @@ class _CreateChallengeScreenState extends ConsumerState<CreateChallengeScreen> {
   String _selectedTemplate = 'wakeup';
   String _failureRule = 'BURN'; // 'BURN' | 'CREDIT' | 'DONATE'
   String _donateTarget = 'unicef';
+  int _durationDays = 30; // 기본값: 한 달
 
   final List<Map<String, String>> _templates = [
     {'id': 'wakeup', 'label': '🌅 기상 챌린지'},
@@ -32,6 +33,17 @@ class _CreateChallengeScreenState extends ConsumerState<CreateChallengeScreen> {
     {'id': 'gym', 'label': '🏋️ 헬스 챌린지'},
     {'id': 'study', 'label': '📚 공부 챌린지'},
     {'id': 'running', 'label': '🏃 러닝 챌린지'},
+  ];
+
+  // 기간 옵션: {days: label}
+  final List<Map<String, dynamic>> _durationOptions = [
+    {'days': 3,   'label': '3일'},
+    {'days': 7,   'label': '1주일'},
+    {'days': 14,  'label': '2주'},
+    {'days': 21,  'label': '3주'},
+    {'days': 30,  'label': '한 달'},
+    {'days': 60,  'label': '2달'},
+    {'days': 90,  'label': '3달'},
   ];
 
   @override
@@ -102,6 +114,43 @@ class _CreateChallengeScreenState extends ConsumerState<CreateChallengeScreen> {
                   if (n < 1000) return '최소 1,000원 이상이어야 합니다';
                   return null;
                 },
+              ),
+
+              const SizedBox(height: 24),
+
+              // ── 챌린지 기간 ──────────────────────────────
+              _SectionTitle('챌린지 기간'),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: _durationOptions.map((opt) {
+                  final days = opt['days'] as int;
+                  final label = opt['label'] as String;
+                  final selected = _durationDays == days;
+                  return GestureDetector(
+                    onTap: () => setState(() => _durationDays = days),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 150),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                      decoration: BoxDecoration(
+                        color: selected ? Colors.red.withOpacity(0.15) : const Color(0xFF1A1F25),
+                        border: Border.all(
+                          color: selected ? Colors.red : Colors.white.withOpacity(0.12),
+                          width: selected ? 1.5 : 1,
+                        ),
+                      ),
+                      child: Text(
+                        label,
+                        style: TextStyle(
+                          color: selected ? Colors.red : Colors.grey[400],
+                          fontWeight: selected ? FontWeight.bold : FontWeight.normal,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
               ),
 
               const SizedBox(height: 24),
@@ -188,7 +237,7 @@ class _CreateChallengeScreenState extends ConsumerState<CreateChallengeScreen> {
                   children: [
                     const Text('📋 계약 조건', style: TextStyle(color: Colors.grey, fontSize: 12, letterSpacing: 1)),
                     const SizedBox(height: 10),
-                    const Text('• 기간: 30일', style: TextStyle(color: Colors.white70)),
+                    Text('• 기간: $_durationDays일 (${_durationOptions.firstWhere((o) => o['days'] == _durationDays)['label']})', style: const TextStyle(color: Colors.white70)),
                     const SizedBox(height: 4),
                     const Text('• 인증 빈도: 매일', style: TextStyle(color: Colors.white70)),
                     const SizedBox(height: 4),
@@ -258,6 +307,7 @@ class _CreateChallengeScreenState extends ConsumerState<CreateChallengeScreen> {
       ref.read(createChallengeProvider.notifier).createAndActivate(
         templateId: _selectedTemplate,
         amount: amount,
+        durationDays: _durationDays,
         failureRule: _failureRule,
         donateTarget: _failureRule == 'DONATE' ? _donateTarget : null,
       );

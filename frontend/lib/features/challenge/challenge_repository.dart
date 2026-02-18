@@ -17,7 +17,8 @@ class ChallengeRepository {
     required String userId,
     required String templateId,
     required int amount,
-    int? frequencyPerWeek,
+    int frequencyPerWeek = 7,
+    int durationDays = 30,
     String failureRule = 'BURN',
     String? donateTarget,
   }) async {
@@ -25,16 +26,18 @@ class ChallengeRepository {
       'user_id': userId,
       'template_id': templateId,
       'amount': amount,
-      'frequency_per_week': frequencyPerWeek ?? 7,
+      'frequency_per_week': frequencyPerWeek,
+      'duration_days': durationDays,
       'failure_rule': failureRule,
       if (donateTarget != null) 'donate_target': donateTarget,
     });
     return Challenge.fromJson(response.data);
   }
 
-  Future<Challenge> activateChallenge(String challengeId, int amount) async {
+  Future<Challenge> activateChallenge(String challengeId, int amount, int durationDays) async {
     final response = await _dio.post('/challenges/$challengeId/activate', data: {
       'amount': amount,
+      'duration_days': durationDays,
     });
     return Challenge.fromJson(response.data);
   }
@@ -53,6 +56,7 @@ class CreateChallengeNotifier extends StateNotifier<AsyncValue<Challenge?>> {
   Future<void> createAndActivate({
     required String templateId,
     required int amount,
+    int durationDays = 30,
     String failureRule = 'BURN',
     String? donateTarget,
   }) async {
@@ -61,18 +65,16 @@ class CreateChallengeNotifier extends StateNotifier<AsyncValue<Challenge?>> {
       final user = _ref.read(authStateProvider).value;
       if (user == null) throw Exception('User not logged in');
 
-      // 1. Create Draft
       final draft = await _repository.createChallenge(
         userId: user.id,
         templateId: templateId,
         amount: amount,
+        durationDays: durationDays,
         failureRule: failureRule,
         donateTarget: donateTarget,
       );
 
-      // 2. Mock Payment & Activate
-      final active = await _repository.activateChallenge(draft.id, amount);
-      
+      final active = await _repository.activateChallenge(draft.id, amount, durationDays);
       state = AsyncValue.data(active);
     } catch (e, st) {
       state = AsyncValue.error(e, st);

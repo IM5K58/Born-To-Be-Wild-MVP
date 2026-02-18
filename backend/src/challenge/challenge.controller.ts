@@ -13,8 +13,8 @@ export class ChallengeController {
   }
 
   @Post(':id/activate')
-  activate(@Param('id') id: string, @Body('amount') amount: number) {
-    return this.challengeService.activate(id, amount);
+  activate(@Param('id') id: string, @Body('amount') amount: number, @Body('duration_days') durationDays: number) {
+    return this.challengeService.activate(id, amount, durationDays ?? 30);
   }
 
   @Get()

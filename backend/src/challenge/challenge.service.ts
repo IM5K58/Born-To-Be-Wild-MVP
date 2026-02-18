@@ -33,7 +33,7 @@ export class ChallengeService {
     return this.challengesRepository.save(challenge);
   }
 
-  async activate(id: string, amount: number) {
+  async activate(id: string, amount: number, durationDays: number = 30) {
     const challenge = await this.challengesRepository.findOne({ where: { id } });
     if (!challenge) throw new NotFoundException('Challenge not found');
     if (challenge.status !== ChallengeStatus.DRAFT) throw new BadRequestException('Challenge must be in DRAFT status');
@@ -49,7 +49,7 @@ export class ChallengeService {
     challenge.status = ChallengeStatus.ACTIVE;
     challenge.start_at = new Date().toISOString().split('T')[0];
     const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 30);
+    endDate.setDate(endDate.getDate() + durationDays);
     challenge.end_at = endDate.toISOString().split('T')[0];
 
     await this.challengesRepository.save(challenge);
