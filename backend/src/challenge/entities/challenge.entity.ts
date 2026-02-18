@@ -53,6 +53,9 @@ export class Challenge {
     @Column({ nullable: true })
     failure_rule: string; // 'BURN', 'CREDIT', 'DONATE'
 
+    @Column({ nullable: true })
+    donate_target: string; // e.g., 'unicef', 'greenpeace', 'save_children'
+
     @OneToOne(() => Deposit, (deposit) => deposit.challenge, { cascade: true })
     deposit: Deposit;
 

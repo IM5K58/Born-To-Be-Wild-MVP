@@ -18,14 +18,16 @@ class ChallengeRepository {
     required String templateId,
     required int amount,
     int? frequencyPerWeek,
-    int? durationDays,
+    String failureRule = 'BURN',
+    String? donateTarget,
   }) async {
     final response = await _dio.post('/challenges', data: {
       'user_id': userId,
       'template_id': templateId,
       'amount': amount,
       'frequency_per_week': frequencyPerWeek ?? 7,
-      // 'duration_days': durationDays ?? 30, // API might need update if I added this field
+      'failure_rule': failureRule,
+      if (donateTarget != null) 'donate_target': donateTarget,
     });
     return Challenge.fromJson(response.data);
   }
@@ -51,6 +53,8 @@ class CreateChallengeNotifier extends StateNotifier<AsyncValue<Challenge?>> {
   Future<void> createAndActivate({
     required String templateId,
     required int amount,
+    String failureRule = 'BURN',
+    String? donateTarget,
   }) async {
     state = const AsyncValue.loading();
     try {
@@ -62,10 +66,11 @@ class CreateChallengeNotifier extends StateNotifier<AsyncValue<Challenge?>> {
         userId: user.id,
         templateId: templateId,
         amount: amount,
+        failureRule: failureRule,
+        donateTarget: donateTarget,
       );
 
       // 2. Mock Payment & Activate
-      // In real app, PG flow here
       final active = await _repository.activateChallenge(draft.id, amount);
       
       state = AsyncValue.data(active);

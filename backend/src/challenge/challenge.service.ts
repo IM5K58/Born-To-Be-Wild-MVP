@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Challenge, ChallengeStatus } from './entities/challenge.entity';
 import { Deposit, DepositStatus } from './entities/deposit.entity';
 import { CreateChallengeDto } from './dto/create-challenge.dto';
+import { User } from '../user/entities/user.entity';
 
 @Injectable()
 export class ChallengeService {
@@ -12,11 +13,21 @@ export class ChallengeService {
     private challengesRepository: Repository<Challenge>,
     @InjectRepository(Deposit)
     private depositsRepository: Repository<Deposit>,
+    @InjectRepository(User)
+    private usersRepository: Repository<User>,
   ) { }
 
-  async create(createChallengeDto: CreateChallengeDto & { user_id: string }) {
+  async create(dto: CreateChallengeDto & { user_id: string }) {
+    // CREDIT 방식은 1회만 허용 — 이미 사용했으면 거부
+    if (dto.failure_rule === 'CREDIT') {
+      const user = await this.usersRepository.findOne({ where: { id: dto.user_id } });
+      if (user?.credit_used) {
+        throw new BadRequestException('크레딧 전환은 최초 1회만 선택 가능합니다.');
+      }
+    }
+
     const challenge = this.challengesRepository.create({
-      ...createChallengeDto,
+      ...dto,
       status: ChallengeStatus.DRAFT,
     });
     return this.challengesRepository.save(challenge);
@@ -27,7 +38,6 @@ export class ChallengeService {
     if (!challenge) throw new NotFoundException('Challenge not found');
     if (challenge.status !== ChallengeStatus.DRAFT) throw new BadRequestException('Challenge must be in DRAFT status');
 
-    // Mock Payment Success
     const deposit = this.depositsRepository.create({
       challenge_id: challenge.id,
       user_id: challenge.user_id,
@@ -37,14 +47,13 @@ export class ChallengeService {
     await this.depositsRepository.save(deposit);
 
     challenge.status = ChallengeStatus.ACTIVE;
-    challenge.start_at = new Date().toISOString().split('T')[0]; // Start today
-    // Calculate end date based on duration (simple logic for MVP)
+    challenge.start_at = new Date().toISOString().split('T')[0];
     const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 30); // Default 30 days if not specified
+    endDate.setDate(endDate.getDate() + 30);
     challenge.end_at = endDate.toISOString().split('T')[0];
 
     await this.challengesRepository.save(challenge);
-    return this.findOne(challenge.id); // Return full object with relations
+    return this.findOne(challenge.id);
   }
 
   async findAll(userId: string) {
@@ -78,9 +87,20 @@ export class ChallengeService {
     await this.challengesRepository.save(challenge);
 
     if (challenge.deposit) {
+      const settledType = success ? 'REFUNDED' : (challenge.failure_rule || 'BURNED');
       challenge.deposit.status = DepositStatus.SETTLED;
-      challenge.deposit.settled_type = success ? 'REFUNDED' : (challenge.failure_rule || 'BURNED');
+      challenge.deposit.settled_type = settledType;
       await this.depositsRepository.save(challenge.deposit);
+
+      // 실패 + CREDIT 방식: 크레딧 적립 & 1회 사용 처리
+      if (!success && challenge.failure_rule === 'CREDIT') {
+        const user = await this.usersRepository.findOne({ where: { id: challenge.user_id } });
+        if (user && !user.credit_used) {
+          user.credits += Number(challenge.deposit.amount);
+          user.credit_used = true;
+          await this.usersRepository.save(user);
+        }
+      }
     }
   }
 }

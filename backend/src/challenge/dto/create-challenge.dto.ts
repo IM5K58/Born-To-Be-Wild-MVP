@@ -5,6 +5,7 @@ export class CreateChallengeDto {
     proof_window_start: string;
     proof_window_end: string;
     proof_type: string;
-    failure_rule: string;
-    amount: number; // Deposit amount
+    failure_rule: string;     // 'BURN' | 'CREDIT' | 'DONATE'
+    donate_target?: string;   // failure_rule === 'DONATE' 일 때 기관 코드
+    amount: number;           // 보증금 금액
 }
