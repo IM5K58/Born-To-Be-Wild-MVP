@@ -16,6 +16,9 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
   late Animation<Offset> _heroSlide;
   late Animation<double> _contentFade;
 
+  static const Color primaryColor = Color(0xFFCE4257);
+  static const Color secondaryColor = Color(0xFF720026);
+
   @override
   void initState() {
     super.initState();
@@ -54,7 +57,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
       backgroundColor: const Color(0xFF060A0E),
       body: Stack(
         children: [
-          // 배경 글로우 - 앰버 계열
+          // 배경 글로우
           Positioned(
             top: -80,
             left: -80,
@@ -63,7 +66,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
               height: 350,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.amber.withOpacity(0.05),
+                color: primaryColor.withOpacity(0.05),
               ),
             ),
           ),
@@ -75,7 +78,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
               height: 300,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.amber.withOpacity(0.03),
+                color: secondaryColor.withOpacity(0.03),
               ),
             ),
           ),
@@ -120,13 +123,13 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                                         horizontal: 10, vertical: 4),
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                          color: Colors.amber.withOpacity(0.5)),
-                                      color: Colors.amber.withOpacity(0.08),
+                                          color: Colors.red.withOpacity(0.5)),
+                                      color: Colors.red.withOpacity(0.08),
                                     ),
                                     child: const Text(
                                       'STEP 03',
                                       style: TextStyle(
-                                        color: Colors.amber,
+                                        color: Colors.red,
                                         fontSize: 11,
                                         letterSpacing: 3,
                                         fontWeight: FontWeight.bold,
@@ -141,7 +144,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                                 style: TextStyle(
                                   fontSize: 80,
                                   fontWeight: FontWeight.w900,
-                                  color: Colors.amber.withOpacity(0.15),
+                                  color: Colors.red.withOpacity(0.15),
                                   height: 1,
                                 ),
                               ),
@@ -160,7 +163,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                               Container(
                                 width: 60,
                                 height: 3,
-                                color: Colors.amber,
+                                color: Colors.red,
                               ),
                             ],
                           ),
@@ -176,14 +179,14 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                Colors.amber.shade900.withOpacity(0.25),
+                                Colors.red.shade900.withOpacity(0.25),
                                 const Color(0xFF1A1F25),
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
                             border: Border.all(
-                                color: Colors.amber.withOpacity(0.3)),
+                                color: Colors.red.withOpacity(0.3)),
                           ),
                           child: const Text(
                             '"말이 아닌 사진으로 증명한다.\n오늘도, 내일도, 끝날 때까지."',
@@ -210,7 +213,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                               title: '사진 인증',
                               desc:
                                   '매일 챌린지를 수행한 사진을 업로드한다. 기상 챌린지라면 아침 사진, 운동이라면 운동 중 사진. 증거가 없으면 인정받지 못한다.',
-                              accentColor: Colors.amber,
+                              accentColor: Colors.red,
                             ),
                             const SizedBox(height: 20),
                             _DetailBlock(
@@ -218,7 +221,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                               title: '인증 마감 시간',
                               desc:
                                   '각 챌린지마다 인증 마감 시간이 있다. 기상 챌린지는 오전 9시, 운동 챌린지는 자정. 마감 전에 올려야 인정된다. 1분이라도 늦으면 실패다.',
-                              accentColor: Colors.amber,
+                              accentColor: Colors.red,
                             ),
                             const SizedBox(height: 20),
                             _DetailBlock(
@@ -226,7 +229,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                               title: '단 하루도 빠질 수 없다',
                               desc:
                                   '챌린지 기간 중 단 하루라도 인증에 실패하면, 그 즉시 챌린지는 종료된다. 변명은 없다. 아프다고, 바쁘다고 봐주지 않는다.',
-                              accentColor: Colors.amber,
+                              accentColor: Colors.red,
                             ),
                             const SizedBox(height: 20),
                             _DetailBlock(
@@ -234,7 +237,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                               title: 'AI 인증 검증',
                               desc:
                                   '업로드된 사진은 AI가 검증한다. 어제 찍은 사진, 인터넷에서 가져온 사진은 통과되지 않는다. 오늘, 지금, 네가 직접 한 것만 인정된다.',
-                              accentColor: Colors.amber,
+                              accentColor: Colors.red,
                             ),
 
                             const SizedBox(height: 32),

@@ -14,6 +14,7 @@ class OathScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final allAsync = ref.watch(allChallengesProvider);
     final user = ref.watch(authStateProvider).value;
+    const primaryColor = Color(0xFFCE4257);
 
     return Scaffold(
       backgroundColor: const Color(0xFF0B0F14),
@@ -21,13 +22,13 @@ class OathScreen extends ConsumerWidget {
         backgroundColor: const Color(0xFF0B0F14),
         title: const Text(
           '피의 서약',
-          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+          style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
         ),
         iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           TextButton.icon(
-            icon: const Icon(Icons.add, color: Colors.red, size: 18),
-            label: const Text('새 서약', style: TextStyle(color: Colors.red)),
+            icon: const Icon(Icons.add, color: primaryColor, size: 18),
+            label: const Text('새 서약', style: TextStyle(color: primaryColor)),
             onPressed: () async {
               await context.push('/challenge/create');
               ref.refresh(allChallengesProvider); // 생성 후 목록 갱신
@@ -37,12 +38,12 @@ class OathScreen extends ConsumerWidget {
       ),
       body: allAsync.when(
         data: (details) => _buildBody(context, ref, details, user),
-        loading: () => const Center(child: CircularProgressIndicator(color: Colors.red)),
+        loading: () => const Center(child: CircularProgressIndicator(color: primaryColor)),
         error: (err, _) => Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.error_outline, color: Colors.red, size: 48),
+              const Icon(Icons.error_outline, color: primaryColor, size: 48),
               const SizedBox(height: 16),
               Text('오류: $err', style: const TextStyle(color: Colors.grey)),
             ],
@@ -53,6 +54,7 @@ class OathScreen extends ConsumerWidget {
   }
 
   Widget _buildBody(BuildContext context, WidgetRef ref, List<ChallengeDetail> details, user) {
+    const primaryColor = Color(0xFFCE4257);
     return Column(
       children: [
         // 상단 배너
@@ -60,11 +62,11 @@ class OathScreen extends ConsumerWidget {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
           decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(color: Colors.red.withOpacity(0.3))),
+            border: Border(bottom: BorderSide(color: primaryColor.withOpacity(0.3))),
           ),
           child: Row(
             children: [
-              const Icon(Icons.bloodtype, color: Colors.red, size: 18),
+              const Icon(Icons.bloodtype, color: primaryColor, size: 18),
               const SizedBox(width: 8),
               Text(
                 '${user?.nickname ?? ""}의 서약서',
@@ -74,12 +76,12 @@ class OathScreen extends ConsumerWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(0.15),
-                  border: Border.all(color: Colors.red.withOpacity(0.4), width: 0.5),
+                  color: primaryColor.withOpacity(0.15),
+                  border: Border.all(color: primaryColor.withOpacity(0.4), width: 0.5),
                 ),
                 child: Text(
                   '총 ${details.length}건',
-                  style: const TextStyle(color: Colors.red, fontSize: 12, fontWeight: FontWeight.bold),
+                  style: const TextStyle(color: primaryColor, fontSize: 12, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -106,6 +108,7 @@ class OathScreen extends ConsumerWidget {
   }
 
   Widget _buildEmptyOath(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -115,9 +118,9 @@ class OathScreen extends ConsumerWidget {
             height: 100,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.red.withOpacity(0.3), width: 2),
+              border: Border.all(color: primaryColor.withOpacity(0.3), width: 2),
             ),
-            child: const Icon(Icons.bloodtype_outlined, color: Colors.red, size: 48),
+            child: const Icon(Icons.bloodtype_outlined, color: primaryColor, size: 48),
           ),
           const SizedBox(height: 24),
           const Text(
@@ -131,7 +134,7 @@ class OathScreen extends ConsumerWidget {
             icon: const Icon(Icons.add),
             label: const Text('서약 맺기'),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
+              backgroundColor: primaryColor,
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
             ),
@@ -143,11 +146,12 @@ class OathScreen extends ConsumerWidget {
   }
 
   Widget _buildAddButton(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
     return OutlinedButton.icon(
-      icon: const Icon(Icons.add, color: Colors.red),
-      label: const Text('새 서약 추가', style: TextStyle(color: Colors.red)),
+      icon: const Icon(Icons.add, color: primaryColor),
+      label: const Text('새 서약 추가', style: TextStyle(color: primaryColor)),
       style: OutlinedButton.styleFrom(
-        side: const BorderSide(color: Colors.red),
+        side: const BorderSide(color: primaryColor),
         padding: const EdgeInsets.symmetric(vertical: 14),
       ),
       onPressed: () => context.push('/challenge/create'),
@@ -166,6 +170,7 @@ class _ContractCard extends ConsumerWidget {
     final deposit = challenge.deposit;
     final mission = detail.mission;
     final attempt = detail.attempt;
+    const primaryColor = Color(0xFFCE4257);
 
     final templateNames = {
       'wakeup': '🌅 기상 챌린지',
@@ -186,7 +191,7 @@ class _ContractCard extends ConsumerWidget {
         color: const Color(0xFF1A1F25),
         border: Border.all(
           color: challenge.status == 'ACTIVE'
-              ? Colors.red.withOpacity(0.4)
+              ? primaryColor.withOpacity(0.4)
               : Colors.white.withOpacity(0.08),
           width: 1.5,
         ),
@@ -198,11 +203,11 @@ class _ContractCard extends ConsumerWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             color: challenge.status == 'ACTIVE'
-                ? Colors.red.withOpacity(0.08)
+                ? primaryColor.withOpacity(0.08)
                 : Colors.white.withOpacity(0.03),
             child: Row(
               children: [
-                const Icon(Icons.article, color: Colors.red, size: 16),
+                const Icon(Icons.article, color: primaryColor, size: 16),
                 const SizedBox(width: 8),
                 Text(
                   templateNames[challenge.templateId] ?? challenge.templateId,
@@ -238,7 +243,7 @@ class _ContractCard extends ConsumerWidget {
                 _Row(
                   '실패 패널티',
                   failureRuleLabels[challenge.failureRule] ?? '🔥 완전 소각',
-                  valueColor: Colors.red,
+                  valueColor: primaryColor,
                 ),
               ],
             ),
@@ -277,7 +282,7 @@ class _ContractCard extends ConsumerWidget {
                               icon: const Icon(Icons.camera_alt, size: 16),
                               label: const Text('지금 인증하기'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.red,
+                                backgroundColor: primaryColor,
                                 foregroundColor: Colors.white,
                                 padding: const EdgeInsets.symmetric(vertical: 10),
                               ),
@@ -327,11 +332,12 @@ class _StatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
     final configs = {
       'ACTIVE': (Colors.green, '진행 중'),
       'DRAFT': (Colors.blue, '준비 중'),
       'COMPLETED': (Colors.cyan, '완료'),
-      'FAILED': (Colors.red, '실패'),
+      'FAILED': (primaryColor, '실패'),
       'CANCELLED': (Colors.grey, '취소'),
     };
     final config = configs[status] ?? (Colors.grey, status);
@@ -356,9 +362,10 @@ class _AttemptStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
     final configs = {
       'PASS': (Icons.check_circle, Colors.green, '미션 완료! 🎉'),
-      'FAIL': (Icons.cancel, Colors.red, '미션 실패'),
+      'FAIL': (Icons.cancel, primaryColor, '미션 실패'),
       'SUBMITTED': (Icons.hourglass_top, Colors.orange, '판정 대기 중...'),
       'PENDING': (Icons.hourglass_top, Colors.orange, '판정 대기 중...'),
     };

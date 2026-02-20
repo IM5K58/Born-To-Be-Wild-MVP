@@ -4,8 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   static const Color background = Color(0xFF0B0F14); // Dark Charcoal
   static const Color surface = Color(0xFF1A1F25); // Slightly lighter
-  static const Color primary = Color(0xFFFF3B30); // Red (Failure/Core)
-  static const Color secondary = Color(0xFF32D74B); // Green (Success/Pass)
+  static const Color primary = Color(0xFFCE4257); // Primary Reddish Pink
+  static const Color secondary = Color(0xFF720026); // Deep Dark Red
+  static const Color success = Color(0xFF32D74B); // Green (Success/Pass)
   static const Color textMain = Color(0xFFFFFFFF);
   static const Color textSub = Color(0xFF8E8E93);
   static const Color locked = Color(0xFF64D2FF); // Blue (Locked Deposit)

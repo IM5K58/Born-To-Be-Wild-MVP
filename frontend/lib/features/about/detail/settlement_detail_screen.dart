@@ -16,6 +16,9 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
   late Animation<Offset> _heroSlide;
   late Animation<double> _contentFade;
 
+  static const Color primaryColor = Color(0xFFCE4257);
+  static const Color secondaryColor = Color(0xFF720026);
+
   @override
   void initState() {
     super.initState();
@@ -54,7 +57,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
       backgroundColor: const Color(0xFF060A0E),
       body: Stack(
         children: [
-          // 배경 글로우 - 그린 계열
+          // 배경 글로우
           Positioned(
             top: -80,
             right: -80,
@@ -63,7 +66,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
               height: 350,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.green.withOpacity(0.05),
+                color: primaryColor.withOpacity(0.05),
               ),
             ),
           ),
@@ -75,7 +78,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
               height: 300,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.green.withOpacity(0.03),
+                color: secondaryColor.withOpacity(0.03),
               ),
             ),
           ),
@@ -120,13 +123,13 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                         horizontal: 10, vertical: 4),
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                          color: Colors.green.withOpacity(0.5)),
-                                      color: Colors.green.withOpacity(0.08),
+                                          color: primaryColor.withOpacity(0.5)),
+                                      color: primaryColor.withOpacity(0.08),
                                     ),
                                     child: const Text(
                                       'STEP 04',
                                       style: TextStyle(
-                                        color: Colors.green,
+                                        color: primaryColor,
                                         fontSize: 11,
                                         letterSpacing: 3,
                                         fontWeight: FontWeight.bold,
@@ -141,7 +144,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                 style: TextStyle(
                                   fontSize: 80,
                                   fontWeight: FontWeight.w900,
-                                  color: Colors.green.withOpacity(0.15),
+                                  color: primaryColor.withOpacity(0.15),
                                   height: 1,
                                 ),
                               ),
@@ -160,7 +163,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                               Container(
                                 width: 60,
                                 height: 3,
-                                color: Colors.green,
+                                color: primaryColor,
                               ),
                             ],
                           ),
@@ -176,14 +179,14 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                Colors.green.shade900.withOpacity(0.3),
+                                secondaryColor.withOpacity(0.3),
                                 const Color(0xFF1A1F25),
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
                             border: Border.all(
-                                color: Colors.green.withOpacity(0.3)),
+                                color: primaryColor.withOpacity(0.3)),
                           ),
                           child: const Text(
                             '"완주하면 전액 돌아온다.\n실패하면 영원히 사라진다.\n선택은 네가 했다."',
@@ -268,9 +271,9 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                             Container(
                               padding: const EdgeInsets.all(24),
                               decoration: BoxDecoration(
-                                color: Colors.red.withOpacity(0.05),
+                                color: primaryColor.withOpacity(0.05),
                                 border: Border.all(
-                                    color: Colors.red.withOpacity(0.3)),
+                                    color: primaryColor.withOpacity(0.3)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -283,7 +286,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                       const Text(
                                         '챌린지 실패',
                                         style: TextStyle(
-                                          color: Colors.red,
+                                          color: primaryColor,
                                           fontWeight: FontWeight.w900,
                                           fontSize: 18,
                                         ),
@@ -304,7 +307,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                     icon: '🔥',
                                     title: '완전 소각',
                                     desc: '보증금이 영구 소멸된다. 어디에도 가지 않는다.',
-                                    color: Colors.red,
+                                    color: primaryColor,
                                   ),
                                   const SizedBox(height: 10),
                                   _FailureOption(
@@ -357,7 +360,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                   _TimingRow(
                                     label: '인증 실패 시',
                                     value: '실패 확정 즉시',
-                                    color: Colors.red,
+                                    color: primaryColor,
                                   ),
                                   const SizedBox(height: 10),
                                   _TimingRow(
@@ -380,14 +383,14 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
-                                      Colors.red.shade900,
+                                      secondaryColor,
                                       const Color(0xFF1A0000),
                                     ],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                   ),
                                   border: Border.all(
-                                      color: Colors.red.withOpacity(0.5)),
+                                      color: primaryColor.withOpacity(0.5)),
                                 ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -411,7 +414,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                         child: Text(
                                           '🩸  피의 서약 맺기',
                                           style: TextStyle(
-                                            color: Color(0xFF7F0000),
+                                            color: secondaryColor,
                                             fontWeight: FontWeight.w900,
                                             fontSize: 16,
                                             letterSpacing: 1,

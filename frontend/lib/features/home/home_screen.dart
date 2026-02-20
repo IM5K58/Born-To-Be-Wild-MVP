@@ -12,6 +12,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final allAsync = ref.watch(allChallengesProvider);
     final user = ref.watch(authStateProvider).value;
+    const primaryColor = Color(0xFFCE4257);
 
     return Scaffold(
       backgroundColor: const Color(0xFF0B0F14),
@@ -47,7 +48,7 @@ class HomeScreen extends ConsumerWidget {
 
           return _buildBody(context, ref, details, pendingToday, user);
         },
-        loading: () => const Center(child: CircularProgressIndicator(color: Colors.red)),
+        loading: () => const Center(child: CircularProgressIndicator(color: primaryColor)),
         error: (err, _) => Center(
           child: Text('오류: $err', style: const TextStyle(color: Colors.grey)),
         ),
@@ -98,6 +99,7 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildAllDoneState(BuildContext context, List<ChallengeDetail> all) {
+    const primaryColor = Color(0xFFCE4257);
     final hasActive = all.any((d) => d.challenge.status == 'ACTIVE');
 
     if (!hasActive) {
@@ -118,7 +120,7 @@ class HomeScreen extends ConsumerWidget {
               icon: const Icon(Icons.bloodtype),
               label: const Text('서약 맺기'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
+                backgroundColor: primaryColor,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
               ),
@@ -154,9 +156,9 @@ class HomeScreen extends ConsumerWidget {
               style: TextStyle(color: Colors.grey[500])),
           const SizedBox(height: 32),
           OutlinedButton.icon(
-            icon: const Icon(Icons.article_outlined, color: Colors.red),
-            label: const Text('서약 목록 보기', style: TextStyle(color: Colors.red)),
-            style: OutlinedButton.styleFrom(side: const BorderSide(color: Colors.red)),
+            icon: const Icon(Icons.article_outlined, color: primaryColor),
+            label: const Text('서약 목록 보기', style: TextStyle(color: primaryColor)),
+            style: OutlinedButton.styleFrom(side: const BorderSide(color: primaryColor)),
             onPressed: () => context.push('/oath'),
           ),
         ],
@@ -176,6 +178,9 @@ class _TodayMissionCard extends StatelessWidget {
     final mission = detail.mission!;
     final attempt = detail.attempt;
     final isFailed = attempt?.status == 'FAIL';
+    
+    const primaryColor = Color(0xFFCE4257);
+    const orangeColor = Color(0xFFE07A5F);
 
     final templateNames = {
       'wakeup': '🌅 기상 챌린지',
@@ -189,7 +194,7 @@ class _TodayMissionCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFF1A1F25),
         border: Border.all(
-          color: isFailed ? Colors.red.withOpacity(0.5) : Colors.orange.withOpacity(0.4),
+          color: isFailed ? primaryColor.withOpacity(0.5) : orangeColor.withOpacity(0.4),
           width: 1.5,
         ),
       ),
@@ -200,13 +205,13 @@ class _TodayMissionCard extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             color: isFailed
-                ? Colors.red.withOpacity(0.08)
-                : Colors.orange.withOpacity(0.06),
+                ? primaryColor.withOpacity(0.08)
+                : orangeColor.withOpacity(0.06),
             child: Row(
               children: [
                 Icon(
                   isFailed ? Icons.warning_amber : Icons.pending_actions,
-                  color: isFailed ? Colors.red : Colors.orange,
+                  color: isFailed ? primaryColor : orangeColor,
                   size: 16,
                 ),
                 const SizedBox(width: 8),
@@ -218,16 +223,16 @@ class _TodayMissionCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
-                    color: (isFailed ? Colors.red : Colors.orange).withOpacity(0.15),
+                    color: (isFailed ? primaryColor : orangeColor).withOpacity(0.15),
                     border: Border.all(
-                      color: isFailed ? Colors.red : Colors.orange,
+                      color: isFailed ? primaryColor : orangeColor,
                       width: 0.5,
                     ),
                   ),
                   child: Text(
                     isFailed ? '재인증 필요' : '미인증',
                     style: TextStyle(
-                      color: isFailed ? Colors.red : Colors.orange,
+                      color: isFailed ? primaryColor : orangeColor,
                       fontSize: 11,
                       fontWeight: FontWeight.bold,
                     ),
@@ -275,7 +280,7 @@ class _TodayMissionCard extends StatelessWidget {
                     icon: const Icon(Icons.camera_alt, size: 16),
                     label: Text(isFailed ? '다시 인증하기' : '지금 인증하기'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: isFailed ? Colors.orange : Colors.red,
+                      backgroundColor: isFailed ? orangeColor : primaryColor,
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       textStyle: const TextStyle(fontWeight: FontWeight.bold),
@@ -300,18 +305,19 @@ class _SummaryBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const orangeColor = Color(0xFFE07A5F);
     final done = total - pending;
     return Row(
       children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
           decoration: BoxDecoration(
-            color: Colors.orange.withOpacity(0.15),
-            border: Border.all(color: Colors.orange.withOpacity(0.4), width: 0.5),
+            color: orangeColor.withOpacity(0.15),
+            border: Border.all(color: orangeColor.withOpacity(0.4), width: 0.5),
           ),
           child: Text(
             '미인증 $pending건',
-            style: const TextStyle(color: Colors.orange, fontSize: 12, fontWeight: FontWeight.bold),
+            style: const TextStyle(color: orangeColor, fontSize: 12, fontWeight: FontWeight.bold),
           ),
         ),
         const SizedBox(width: 6),

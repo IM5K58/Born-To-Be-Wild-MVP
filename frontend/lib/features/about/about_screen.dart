@@ -13,6 +13,9 @@ class _AboutScreenState extends State<AboutScreen> {
   final List<GlobalKey> _sectionKeys = List.generate(8, (_) => GlobalKey());
   final List<bool> _visible = List.generate(8, (_) => false);
 
+  static const Color primaryColor = Color(0xFFCE4257);
+  static const Color secondaryColor = Color(0xFF720026);
+
   @override
   void initState() {
     super.initState();
@@ -59,7 +62,7 @@ class _AboutScreenState extends State<AboutScreen> {
               height: 400,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.red.withOpacity(0.04),
+                color: primaryColor.withOpacity(0.04),
               ),
             ),
           ),
@@ -71,7 +74,7 @@ class _AboutScreenState extends State<AboutScreen> {
               height: 500,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.red.withOpacity(0.03),
+                color: secondaryColor.withOpacity(0.03),
               ),
             ),
           ),
@@ -100,7 +103,7 @@ class _AboutScreenState extends State<AboutScreen> {
                 actions: [
                   TextButton(
                     onPressed: () => context.push('/auth'),
-                    child: const Text('시작하기', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+                    child: const Text('시작하기', style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold)),
                   ),
                 ],
               ),
@@ -215,6 +218,7 @@ class _AnimatedSection extends StatelessWidget {
 class _HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(28, 60, 28, 80),
@@ -224,12 +228,12 @@ class _HeroSection extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.red.withOpacity(0.5)),
-              color: Colors.red.withOpacity(0.08),
+              border: Border.all(color: primaryColor.withOpacity(0.5)),
+              color: primaryColor.withOpacity(0.08),
             ),
             child: const Text(
               '⚔️  BEAST HEART',
-              style: TextStyle(color: Colors.red, fontSize: 12, letterSpacing: 3, fontWeight: FontWeight.bold),
+              style: TextStyle(color: primaryColor, fontSize: 12, letterSpacing: 3, fontWeight: FontWeight.bold),
             ),
           ),
           const SizedBox(height: 28),
@@ -257,8 +261,8 @@ class _HeroSection extends StatelessWidget {
           // 핵심 대사 1
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              border: Border(left: BorderSide(color: Colors.red, width: 3)),
+            decoration: const BoxDecoration(
+              border: Border(left: BorderSide(color: primaryColor, width: 3)),
             ),
             child: const Text(
               '심장이 시키는 일에\n이유를 묻지 마라.',
@@ -275,7 +279,7 @@ class _HeroSection extends StatelessWidget {
           Container(
             width: 60,
             height: 3,
-            color: Colors.red,
+            color: primaryColor,
           ),
         ],
       ),
@@ -287,12 +291,13 @@ class _HeroSection extends StatelessWidget {
 class _ProvokeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       padding: const EdgeInsets.all(28),
       decoration: BoxDecoration(
-        color: Colors.red.withOpacity(0.06),
-        border: Border.all(color: Colors.red.withOpacity(0.3)),
+        color: primaryColor.withOpacity(0.06),
+        border: Border.all(color: primaryColor.withOpacity(0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -346,7 +351,7 @@ class _ProblemSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _SectionLabel('문제'),
+          const _SectionLabel('문제'),
           const SizedBox(height: 12),
           const Text(
             '기존 방법은\n전부 구멍이 있다.',
@@ -385,24 +390,26 @@ class _ProblemSection extends StatelessWidget {
 class _SolutionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
+    const secondaryColor = Color(0xFF720026);
     return Container(
       margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.red.shade900.withOpacity(0.5),
+            secondaryColor.withOpacity(0.5),
             const Color(0xFF1A1F25),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        border: Border.all(color: Colors.red.withOpacity(0.4)),
+        border: Border.all(color: primaryColor.withOpacity(0.4)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _SectionLabel('해결책'),
+          const _SectionLabel('해결책'),
           const SizedBox(height: 16),
           const Text(
             '돈을 걸어라.',
@@ -442,11 +449,11 @@ class _SolutionSection extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             children: [
-              const Icon(Icons.psychology, color: Colors.red, size: 18),
+              const Icon(Icons.psychology, color: primaryColor, size: 18),
               const SizedBox(width: 8),
               Text(
                 '손실 회피 심리 (Loss Aversion)',
-                style: TextStyle(color: Colors.red.shade300, fontSize: 13, fontStyle: FontStyle.italic),
+                style: TextStyle(color: primaryColor.withOpacity(0.7), fontSize: 13, fontStyle: FontStyle.italic),
               ),
             ],
           ),
@@ -460,33 +467,34 @@ class _SolutionSection extends StatelessWidget {
 class _HowItWorksSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
     final steps = [
       {
         'num': '01',
         'title': '서약을 맺어라',
         'desc': '챌린지를 고르고 보증금을 설정한다.\n이 순간부터 계약이 시작된다.',
-        'color': Colors.red,
+        'color': primaryColor,
         'route': '/about/oath',
       },
       {
         'num': '02',
         'title': '보증금을 잠궈라',
         'desc': '네 돈이 금고에 잠긴다.\n챌린지가 끝나기 전엔 꺼낼 수 없다.',
-        'color': Colors.orange,
+        'color': primaryColor,
         'route': '/about/lock',
       },
       {
         'num': '03',
         'title': '매일 증명하라',
         'desc': '사진으로 인증한다.\n핑계 없다. 오늘도 해야 한다.',
-        'color': Colors.amber,
+        'color': primaryColor,
         'route': '/about/verify',
       },
       {
         'num': '04',
         'title': '결과를 받아라',
         'desc': '완주하면 보증금 전액 반환.\n실패하면? 소각이다.',
-        'color': Colors.green,
+        'color': primaryColor,
         'route': '/about/settlement',
       },
     ];
@@ -496,7 +504,7 @@ class _HowItWorksSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _SectionLabel('작동 방식'),
+          const _SectionLabel('작동 방식'),
           const SizedBox(height: 12),
           const Text(
             '단순하다.\n그래서 강하다.',
@@ -661,6 +669,7 @@ class _StepCardState extends State<_StepCard> {
 class _BurnSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
     return Container(
       margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(28),
@@ -671,7 +680,7 @@ class _BurnSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _SectionLabel('실패 시 처리'),
+          const _SectionLabel('실패 시 처리'),
           const SizedBox(height: 12),
           const Text(
             '네가 선택한다.\n소각 방식까지.',
@@ -683,21 +692,21 @@ class _BurnSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 28),
-          _BurnOption(
+          const _BurnOption(
             icon: '🔥',
             title: '완전 소각',
             desc: '보증금이 영원히 사라진다.\n가장 강력한 동기부여. 진짜 사나이의 선택.',
-            color: Colors.red,
+            color: primaryColor,
           ),
           const SizedBox(height: 16),
-          _BurnOption(
+          const _BurnOption(
             icon: '🤝',
             title: '사회 기부',
             desc: '유니세프, 그린피스 등 선택한 기관에 기부된다.\n내 실패가 세상에 도움이 된다.',
             color: Colors.teal,
           ),
           const SizedBox(height: 16),
-          _BurnOption(
+          const _BurnOption(
             icon: '💎',
             title: '크레딧 전환 (최초 1회)',
             desc: '딱 한 번만 허용된다.\n재도전 시 사용 가능한 크레딧으로 전환.',
@@ -849,19 +858,21 @@ class _ChallengeTypesSection extends StatelessWidget {
 class _FinalCtaSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
+    const secondaryColor = Color(0xFF720026);
     return Container(
       margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(36),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.red.shade900,
+            secondaryColor,
             const Color(0xFF1A0000),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        border: Border.all(color: Colors.red.withOpacity(0.5), width: 1.5),
+        border: Border.all(color: primaryColor.withOpacity(0.5), width: 1.5),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -881,13 +892,13 @@ class _FinalCtaSection extends StatelessWidget {
             '언제까지 겁쟁이 마냥 도망칠거냐.',
             style: TextStyle(
               fontSize: 18,
-              color: Colors.red.shade200,
+              color: primaryColor.withOpacity(0.7),
               height: 1.7,
               fontWeight: FontWeight.w600,
             ),
           ),
           const SizedBox(height: 12),
-          Text(
+          const Text(
             '야수의 심장을 가진 채 살아라.',
             style: TextStyle(
               fontSize: 22,
@@ -903,7 +914,7 @@ class _FinalCtaSection extends StatelessWidget {
               onPressed: () => context.push('/auth'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                foregroundColor: Colors.red.shade900,
+                foregroundColor: secondaryColor,
                 padding: const EdgeInsets.symmetric(vertical: 18),
                 textStyle: const TextStyle(
                   fontSize: 18,
@@ -918,7 +929,7 @@ class _FinalCtaSection extends StatelessWidget {
           Center(
             child: Text(
               '변명은 필요없다. 결과만 있을 뿐이다.',
-              style: TextStyle(color: Colors.red.shade300, fontSize: 12, fontStyle: FontStyle.italic),
+              style: TextStyle(color: primaryColor.withOpacity(0.6), fontSize: 12, fontStyle: FontStyle.italic),
             ),
           ),
         ],
@@ -934,14 +945,15 @@ class _SectionLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
     return Row(
       children: [
-        Container(width: 3, height: 14, color: Colors.red),
+        Container(width: 3, height: 14, color: primaryColor),
         const SizedBox(width: 8),
         Text(
           text.toUpperCase(),
           style: const TextStyle(
-            color: Colors.red,
+            color: primaryColor,
             fontSize: 11,
             letterSpacing: 3,
             fontWeight: FontWeight.bold,

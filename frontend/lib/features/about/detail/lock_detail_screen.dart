@@ -16,6 +16,9 @@ class _LockDetailScreenState extends State<LockDetailScreen>
   late Animation<Offset> _heroSlide;
   late Animation<double> _contentFade;
 
+  static const Color primaryColor = Color(0xFFCE4257);
+  static const Color secondaryColor = Color(0xFF720026);
+
   @override
   void initState() {
     super.initState();
@@ -54,7 +57,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
       backgroundColor: const Color(0xFF060A0E),
       body: Stack(
         children: [
-          // 배경 글로우 - 오렌지 계열
+          // 배경 글로우
           Positioned(
             top: -80,
             right: -80,
@@ -63,7 +66,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
               height: 350,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.orange.withOpacity(0.05),
+                color: primaryColor.withOpacity(0.05),
               ),
             ),
           ),
@@ -75,7 +78,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
               height: 300,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.orange.withOpacity(0.03),
+                color: secondaryColor.withOpacity(0.03),
               ),
             ),
           ),
@@ -121,13 +124,13 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                           color:
-                                              Colors.orange.withOpacity(0.5)),
-                                      color: Colors.orange.withOpacity(0.08),
+                                              primaryColor.withOpacity(0.5)),
+                                      color: primaryColor.withOpacity(0.08),
                                     ),
                                     child: const Text(
                                       'STEP 02',
                                       style: TextStyle(
-                                        color: Colors.orange,
+                                        color: primaryColor,
                                         fontSize: 11,
                                         letterSpacing: 3,
                                         fontWeight: FontWeight.bold,
@@ -142,7 +145,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                                 style: TextStyle(
                                   fontSize: 80,
                                   fontWeight: FontWeight.w900,
-                                  color: Colors.orange.withOpacity(0.15),
+                                  color: primaryColor.withOpacity(0.15),
                                   height: 1,
                                 ),
                               ),
@@ -161,7 +164,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                               Container(
                                 width: 60,
                                 height: 3,
-                                color: Colors.orange,
+                                color: primaryColor,
                               ),
                             ],
                           ),
@@ -177,14 +180,14 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                Colors.orange.shade900.withOpacity(0.3),
+                                secondaryColor.withOpacity(0.3),
                                 const Color(0xFF1A1F25),
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
                             border: Border.all(
-                                color: Colors.orange.withOpacity(0.3)),
+                                color: primaryColor.withOpacity(0.3)),
                           ),
                           child: const Text(
                             '"금고에 들어간 돈은\n챌린지가 끝나기 전까지\n절대 꺼낼 수 없다."',
@@ -211,7 +214,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                               title: '즉시 에스크로 처리',
                               desc:
                                   '서약 완료 즉시 보증금은 에스크로 계좌로 이동된다. 네 계좌에서 빠져나가는 순간, 그 돈은 더 이상 네 것이 아니다. 챌린지를 완주해야만 돌아온다.',
-                              accentColor: Colors.orange,
+                              accentColor: primaryColor,
                             ),
                             const SizedBox(height: 20),
                             _DetailBlock(
@@ -219,7 +222,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                               title: '중도 인출 불가',
                               desc:
                                   '어떤 이유로도 챌린지 도중에 돈을 꺼낼 수 없다. 급전이 필요해도, 마음이 바뀌어도, 불가능하다. 이게 진짜 강제력이다.',
-                              accentColor: Colors.orange,
+                              accentColor: primaryColor,
                             ),
                             const SizedBox(height: 20),
                             _DetailBlock(
@@ -227,7 +230,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                               title: '안전한 보관',
                               desc:
                                   '잠긴 보증금은 안전하게 보관된다. 챌린지를 완주하면 수수료 없이 전액 반환된다. 네가 해내면 단 한 푼도 잃지 않는다.',
-                              accentColor: Colors.orange,
+                              accentColor: primaryColor,
                             ),
                             const SizedBox(height: 20),
                             _DetailBlock(
@@ -235,7 +238,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                               title: '챌린지 기간 동안 유지',
                               desc:
                                   '7일이든 90일이든, 설정한 기간이 끝날 때까지 잠금은 유지된다. 시간이 지날수록 압박감은 커진다. 그게 바로 이 시스템의 힘이다.',
-                              accentColor: Colors.orange,
+                              accentColor: primaryColor,
                             ),
 
                             const SizedBox(height: 32),
@@ -244,9 +247,9 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                             Container(
                               padding: const EdgeInsets.all(20),
                               decoration: BoxDecoration(
-                                color: Colors.orange.withOpacity(0.05),
+                                color: primaryColor.withOpacity(0.05),
                                 border: Border.all(
-                                    color: Colors.orange.withOpacity(0.3)),
+                                    color: primaryColor.withOpacity(0.3)),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -254,12 +257,12 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                                   Row(
                                     children: [
                                       const Icon(Icons.psychology,
-                                          color: Colors.orange, size: 18),
+                                          color: primaryColor, size: 18),
                                       const SizedBox(width: 8),
                                       Text(
                                         '손실 회피 심리 (Loss Aversion)',
                                         style: TextStyle(
-                                          color: Colors.orange.shade300,
+                                          color: primaryColor.withOpacity(0.8),
                                           fontSize: 13,
                                           fontWeight: FontWeight.bold,
                                           fontStyle: FontStyle.italic,
