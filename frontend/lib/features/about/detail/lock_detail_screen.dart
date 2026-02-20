@@ -151,7 +151,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                               ),
                               const SizedBox(height: 8),
                               const Text(
-                                '보증금을\n잠궈라',
+                                '보증금을\n잠구십시오',
                                 style: TextStyle(
                                   fontSize: 52,
                                   fontWeight: FontWeight.w900,
@@ -190,7 +190,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                                 color: primaryColor.withOpacity(0.3)),
                           ),
                           child: const Text(
-                            '"금고에 들어간 돈은\n챌린지가 끝나기 전까지\n절대 꺼낼 수 없다."',
+                            '"금고에 들어간 돈은\n챌린지가 끝나기 전까지\n절대 꺼낼 수 없습니다."',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w800,
@@ -213,7 +213,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                               icon: '🔒',
                               title: '즉시 에스크로 처리',
                               desc:
-                                  '서약 완료 즉시 보증금은 에스크로 계좌로 이동된다. 네 계좌에서 빠져나가는 순간, 그 돈은 더 이상 네 것이 아니다. 챌린지를 완주해야만 돌아온다.',
+                                  '서약 완료 즉시 보증금은 에스크로 계좌로 이동됩니다. 당신 계좌에서 빠져나가는 순간, 챌린지를 완주해야만 돌아오는 또 다른 목표가 됩니다.',
                               accentColor: primaryColor,
                             ),
                             const SizedBox(height: 20),
@@ -221,7 +221,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                               icon: '🚫',
                               title: '중도 인출 불가',
                               desc:
-                                  '어떤 이유로도 챌린지 도중에 돈을 꺼낼 수 없다. 급전이 필요해도, 마음이 바뀌어도, 불가능하다. 이게 진짜 강제력이다.',
+                                  '어떤 이유로도 챌린지 도중에 돈을 꺼낼 수 없습니다. 급전이 필요해도, 마음이 바뀌어도, 불가능합니다. 이것이 진짜 강제력입니다.',
                               accentColor: primaryColor,
                             ),
                             const SizedBox(height: 20),
@@ -229,7 +229,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                               icon: '🛡️',
                               title: '안전한 보관',
                               desc:
-                                  '잠긴 보증금은 안전하게 보관된다. 챌린지를 완주하면 수수료 없이 전액 반환된다. 네가 해내면 단 한 푼도 잃지 않는다.',
+                                  '잠긴 보증금은 안전하게 보관됩니다. 챌린지를 완주하면 수수료 없이 전액 반환됩니다. 당신이 해내면 단 한 푼도 잃지 않습니다.',
                               accentColor: primaryColor,
                             ),
                             const SizedBox(height: 20),
@@ -237,7 +237,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                               icon: '⏱️',
                               title: '챌린지 기간 동안 유지',
                               desc:
-                                  '7일이든 90일이든, 설정한 기간이 끝날 때까지 잠금은 유지된다. 시간이 지날수록 압박감은 커진다. 그게 바로 이 시스템의 힘이다.',
+                                  '7일이든 90일이든, 설정한 기간이 끝날 때까지 잠금은 유지됩니다. 시간이 지날수록 압박감은 커지고, 의지력도 강해집니다. 그게 바로 이 시스템의 힘입니다.',
                               accentColor: primaryColor,
                             ),
 
@@ -272,7 +272,7 @@ class _LockDetailScreenState extends State<LockDetailScreen>
                                   ),
                                   const SizedBox(height: 12),
                                   Text(
-                                    '행동경제학 연구에 따르면, 인간은 같은 금액의 이익보다 손실에 약 2배 더 강하게 반응한다. 잠긴 보증금은 매 순간 "잃을 수 있다"는 압박을 준다. 이것이 진짜 동기부여다.',
+                                    '행동경제학 연구에 따르면, 인간은 같은 금액의 이익보다 손실에 약 2배 더 강하게 반응합니다. 잠긴 보증금은 매 순간 "잃을 수 있다"는 압박을 줍니다. 이것이 진짜 동기부여의 시작입니다.',
                                     style: TextStyle(
                                       color: Colors.grey[400],
                                       fontSize: 13,

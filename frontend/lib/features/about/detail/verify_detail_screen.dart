@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class VerifyDetailScreen extends StatefulWidget {
@@ -150,7 +150,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                               ),
                               const SizedBox(height: 8),
                               const Text(
-                                '매일\n증명하라',
+                                '매일\n증명하십시오',
                                 style: TextStyle(
                                   fontSize: 52,
                                   fontWeight: FontWeight.w900,
@@ -189,7 +189,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                                 color: Colors.red.withOpacity(0.3)),
                           ),
                           child: const Text(
-                            '"말이 아닌 사진으로 증명한다.\n오늘도, 내일도, 끝날 때까지."',
+                            '"말이 아닌 사진으로 증명하고 기록하십시오.\n오늘도, 내일도, 끝날 때까지."',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w800,
@@ -212,7 +212,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                               icon: '📸',
                               title: '사진 인증',
                               desc:
-                                  '매일 챌린지를 수행한 사진을 업로드한다. 기상 챌린지라면 아침 사진, 운동이라면 운동 중 사진. 증거가 없으면 인정받지 못한다.',
+                                  '매일 챌린지를 수행한 사진을 업로드하십시오. 기상 챌린지라면 아침 사진과 시간, 운동이라면 운동 중 사진. 증거가 없으면 인정받지 못합니다.',
                               accentColor: Colors.red,
                             ),
                             const SizedBox(height: 20),
@@ -220,15 +220,15 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                               icon: '⏰',
                               title: '인증 마감 시간',
                               desc:
-                                  '각 챌린지마다 인증 마감 시간이 있다. 기상 챌린지는 오전 9시, 운동 챌린지는 자정. 마감 전에 올려야 인정된다. 1분이라도 늦으면 실패다.',
+                                  '각 챌린지마다 인증 마감 시간을 정할 수 있습니다.. 기상 챌린지는 오전 9시, 운동 챌린지는 자정 등으로 설정하십시오. 마감 전에 올려야 인정됩니다. 1분이라도 늦으면 실패입니다.',
                               accentColor: Colors.red,
                             ),
                             const SizedBox(height: 20),
                             _DetailBlock(
                               icon: '🚨',
-                              title: '단 하루도 빠질 수 없다',
+                              title: '단 하루도 빠지지 마십시오.',
                               desc:
-                                  '챌린지 기간 중 단 하루라도 인증에 실패하면, 그 즉시 챌린지는 종료된다. 변명은 없다. 아프다고, 바쁘다고 봐주지 않는다.',
+                                  '챌린지 생성 시에 별도로 설정하지 않는 이상, 챌린지 기간 중 단 하루라도 인증에 실패하면, 그 즉시 챌린지는 종료됩니다. 변명은 없습니다.',
                               accentColor: Colors.red,
                             ),
                             const SizedBox(height: 20),
@@ -236,7 +236,7 @@ class _VerifyDetailScreenState extends State<VerifyDetailScreen>
                               icon: '🤖',
                               title: 'AI 인증 검증',
                               desc:
-                                  '업로드된 사진은 AI가 검증한다. 어제 찍은 사진, 인터넷에서 가져온 사진은 통과되지 않는다. 오늘, 지금, 네가 직접 한 것만 인정된다.',
+                                  '업로드된 사진은 AI가 검증합니다. 어제 찍은 사진, 인터넷에서 가져온 사진은 통과되지 않습니다. 오늘, 지금, 당신이 직접 한 것만 인정합니다.',
                               accentColor: Colors.red,
                             ),
 

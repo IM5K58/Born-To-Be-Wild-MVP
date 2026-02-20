@@ -149,7 +149,7 @@ class _OathDetailScreenState extends State<OathDetailScreen>
                               ),
                               const SizedBox(height: 8),
                               const Text(
-                                '서약을\n맺어라',
+                                '서약을\n맺으십시오.',
                                 style: TextStyle(
                                   fontSize: 52,
                                   fontWeight: FontWeight.w900,
@@ -192,7 +192,7 @@ class _OathDetailScreenState extends State<OathDetailScreen>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text(
-                                '"계약이 시작되는 순간,\n너는 더 이상 과거의 네가 아니다."',
+                                '"계약이 시작되는 순간,\n당신은 더 이상 과거의 당신이 아닙니다."',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w800,
@@ -216,30 +216,30 @@ class _OathDetailScreenState extends State<OathDetailScreen>
                           children: [
                             _DetailBlock(
                               icon: '🎯',
-                              title: '챌린지를 선택한다',
+                              title: '챌린지를 선택하십시오.',
                               desc:
-                                  '기상, 운동, 공부, 커밋 등 네가 정복하고 싶은 분야를 고른다. 남이 시키는 게 아니다. 네가 원하는 것을 골라라. 그게 진짜 동기부여의 시작이다.',
+                                  '기상, 운동, 공부, 커밋 등 당신이 정복하고 싶은 분야를 고릅니다. 남이 시키는 게 아닙니다. 당신이 진정 원하는 것을 고르십시오. 그게 진짜 동기부여의 시작입니다.',
                             ),
                             const SizedBox(height: 20),
                             _DetailBlock(
                               icon: '💰',
-                              title: '보증금을 설정한다',
+                              title: '보증금을 설정하십시오.',
                               desc:
-                                  '얼마를 걸 것인가. 최소 1만원부터 시작할 수 있다. 단, 잃어도 괜찮은 돈을 걸지 마라. 진짜 아까운 금액을 걸어야 진짜 움직인다.',
+                                  '얼마를 걸 것인가. 최소 1만원부터 시작할 수 있습니다. 진짜 아까운 금액을 걸어야 진심으로 움직일 수 있습니다.',
                             ),
                             const SizedBox(height: 20),
                             _DetailBlock(
                               icon: '📅',
-                              title: '기간을 정한다',
+                              title: '기간을 정하십시오.',
                               desc:
-                                  '7일, 14일, 30일, 90일. 짧게 시작해도 좋다. 중요한 건 기간이 아니라 매일 해내는 것이다. 단 하루도 빠짐없이.',
+                                  '7일, 14일, 30일, 90일. 짧게 시작해도 좋습니다. 중요한 건 기간이 아니라 매일 해내는 것입니다. 단 하루도 빠짐없이.',
                             ),
                             const SizedBox(height: 20),
                             _DetailBlock(
                               icon: '🔥',
-                              title: '실패 처리 방식을 선택한다',
+                              title: '실패 처리 방식을 선택하십시오.',
                               desc:
-                                  '완전 소각, 사회 기부, 크레딧 전환 중 하나를 선택한다. 이 선택이 너의 각오를 보여준다. 가장 강한 자는 완전 소각을 선택한다.',
+                                  '완전 소각, 사회 기부, 크레딧 전환 중 하나를 선택하십시오. 이 선택이 당신의 각오를 보여줍니다.',
                             ),
                             const SizedBox(height: 32),
 
@@ -263,7 +263,7 @@ class _OathDetailScreenState extends State<OathDetailScreen>
                                           CrossAxisAlignment.start,
                                       children: [
                                         const Text(
-                                          '서약은 취소할 수 없다',
+                                          '서약은 취소할 수 없습니다',
                                           style: TextStyle(
                                             color: Colors.red,
                                             fontWeight: FontWeight.bold,
@@ -272,7 +272,7 @@ class _OathDetailScreenState extends State<OathDetailScreen>
                                         ),
                                         const SizedBox(height: 6),
                                         Text(
-                                          '서약을 맺는 순간, 보증금은 즉시 잠긴다. 변심해도 돌아올 수 없다. 신중하게 결정하되, 결정했으면 흔들리지 마라.',
+                                          '서약을 맺는 순간, 보증금은 즉시 금고에 들어가 잠깁니다. 변심해도 돌아올 수 없습니다. 신중하게 결정하되, 결정했으면 흔들리지 마십시오.',
                                           style: TextStyle(
                                             color: Colors.grey[400],
                                             fontSize: 13,
@@ -316,7 +316,7 @@ class _OathDetailScreenState extends State<OathDetailScreen>
                                         ),
                                         const SizedBox(height: 4),
                                         const Text(
-                                          '02 · 보증금을 잠궈라',
+                                          '02 · 잠금',
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,

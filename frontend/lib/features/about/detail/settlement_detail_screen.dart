@@ -150,7 +150,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                               ),
                               const SizedBox(height: 8),
                               const Text(
-                                '결과를\n받아라',
+                                '결과를\n받으십시오.',
                                 style: TextStyle(
                                   fontSize: 52,
                                   fontWeight: FontWeight.w900,
@@ -189,7 +189,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                 color: primaryColor.withOpacity(0.3)),
                           ),
                           child: const Text(
-                            '"완주하면 전액 돌아온다.\n실패하면 영원히 사라진다.\n선택은 네가 했다."',
+                            '"완주하면 전액 돌려받습니다.\n실패하면 당신의 손을 떠납니다.\n선택은 당신이 했습니다."',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w800,
@@ -249,12 +249,12 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                   const SizedBox(height: 8),
                                   _ResultItem(
                                     label: '추가 보상',
-                                    value: '완주 배지 + 연속 기록',
+                                    value: '완주 배지 + 연속 기록 + 제휴사 혜택',
                                     color: Colors.green,
                                   ),
                                   const SizedBox(height: 16),
                                   Text(
-                                    '챌린지 종료 후 24시간 이내에 등록된 계좌로 전액 입금된다. 단 한 푼도 빠지지 않는다. 이게 네가 받아야 할 것이다.',
+                                    '챌린지 종료 후 24시간 이내에 등록된 계좌로 전액 입금됩니다. 단 한 푼도 빠지지 않습니다. 당신이 마땅히 받아야할 보상입니다..',
                                     style: TextStyle(
                                       color: Colors.grey[400],
                                       fontSize: 13,
@@ -306,21 +306,21 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                   _FailureOption(
                                     icon: '🔥',
                                     title: '완전 소각',
-                                    desc: '보증금이 영구 소멸된다. 어디에도 가지 않는다.',
+                                    desc: '보증금이 플랫폼 유지 비용으로 사용됩니다.',
                                     color: primaryColor,
                                   ),
                                   const SizedBox(height: 10),
                                   _FailureOption(
                                     icon: '🤝',
                                     title: '사회 기부',
-                                    desc: '선택한 기관에 기부된다. 실패가 선행이 된다.',
+                                    desc: '선택한 기관에 기부됩니다. 실패조차도 의미있게 만드십시오.',
                                     color: Colors.teal,
                                   ),
                                   const SizedBox(height: 10),
                                   _FailureOption(
                                     icon: '💎',
                                     title: '크레딧 전환 (최초 1회)',
-                                    desc: '재도전 크레딧으로 전환. 단 한 번만 허용된다.',
+                                    desc: '재도전 크레딧으로 전환. 단 한 번만 허용됩니다.',
                                     color: Colors.amber,
                                     badge: '1회 한정',
                                   ),
@@ -396,7 +396,7 @@ class _SettlementDetailScreenState extends State<SettlementDetailScreen>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const Text(
-                                      '이제 알았다.\n시작할 준비가 됐냐.',
+                                      '시작할 준비가 됐습니까.',
                                       style: TextStyle(
                                         fontSize: 26,
                                         fontWeight: FontWeight.w900,

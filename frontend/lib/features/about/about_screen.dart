@@ -238,7 +238,7 @@ class _HeroSection extends StatelessWidget {
           ),
           const SizedBox(height: 28),
           const Text(
-            '변명은\n필요없다.',
+            '변명은\n필요없습니다.',
             style: TextStyle(
               fontSize: 56,
               fontWeight: FontWeight.w900,
@@ -249,7 +249,7 @@ class _HeroSection extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            '보증금을 걸어라.\n매일 증명하라.\n아니면 소각된다.',
+            '보증금을 거십시오.\n매일 증명하십시오.\n아니면 소각될 뿐입니다.',
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey[400],
@@ -265,7 +265,7 @@ class _HeroSection extends StatelessWidget {
               border: Border(left: BorderSide(color: primaryColor, width: 3)),
             ),
             child: const Text(
-              '심장이 시키는 일에\n이유를 묻지 마라.',
+              '심장이 시키는 일에\n이유를 묻지 마십시오.',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w800,
@@ -313,7 +313,7 @@ class _ProvokeSection extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            '그 내일이 몇 번째냐.',
+            '그 내일이 몇 번째입니까?',
             style: TextStyle(
               fontSize: 16,
               color: Colors.grey[400],
@@ -322,7 +322,7 @@ class _ProvokeSection extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text(
-            '작심삼일. 의지력 탓하지 마라.\n시스템이 없어서다.\n이제 네 돈이 너를 강제한다.',
+            '작심삼일. 의지력을 탓하지 마십시오.\n시스템은 저희가 만들어 드리겠습니다.\n이제 네 돈이 당신을 강제합니다.',
             style: TextStyle(
               fontSize: 16,
               color: Colors.grey[300],
@@ -354,7 +354,7 @@ class _ProblemSection extends StatelessWidget {
           const _SectionLabel('문제'),
           const SizedBox(height: 12),
           const Text(
-            '기존 방법은\n전부 구멍이 있다.',
+            '기존 방법은\n전부 구멍이 있었습니다.',
             style: TextStyle(
               fontSize: 34,
               fontWeight: FontWeight.w900,
@@ -412,7 +412,7 @@ class _SolutionSection extends StatelessWidget {
           const _SectionLabel('해결책'),
           const SizedBox(height: 16),
           const Text(
-            '돈을 걸어라.',
+            '본인을 움직이게 할 제약을 만드십시오.',
             style: TextStyle(
               fontSize: 42,
               fontWeight: FontWeight.w900,
@@ -422,7 +422,7 @@ class _SolutionSection extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            '인간은 이익보다 손실에 2배 민감하다.\n심리학이 증명한 사실이다.\n\n네가 건 보증금은 실패하는 순간\n영원히 사라진다.\n그게 진짜 동기부여다.',
+            '인간은 이익보다 손실에 2배 민감합니다.\n심리학이 증명한 사실입니다.\n\n당신이 건 보증금은 실패하는 순간\n사회로 환원됩니다.\n그게 진짜 동기부여의 시작입니다.',
             style: TextStyle(
               fontSize: 16,
               color: Colors.grey[300],
@@ -471,29 +471,29 @@ class _HowItWorksSection extends StatelessWidget {
     final steps = [
       {
         'num': '01',
-        'title': '서약을 맺어라',
-        'desc': '챌린지를 고르고 보증금을 설정한다.\n이 순간부터 계약이 시작된다.',
+        'title': '서약을 맺으십시오.',
+        'desc': '챌린지를 고르고 보증금을 설정하십시오.\n이 순간부터 계약이 시작됩니다.',
         'color': primaryColor,
         'route': '/about/oath',
       },
       {
         'num': '02',
-        'title': '보증금을 잠궈라',
-        'desc': '네 돈이 금고에 잠긴다.\n챌린지가 끝나기 전엔 꺼낼 수 없다.',
+        'title': '보증금을 거십시오.',
+        'desc': '당신의 돈이 챌린지 금고에 들어간 뒤 잠깁니다.\n챌린지가 끝나기 전엔 꺼낼 수 없습니다.',
         'color': primaryColor,
         'route': '/about/lock',
       },
       {
         'num': '03',
-        'title': '매일 증명하라',
-        'desc': '사진으로 인증한다.\n핑계 없다. 오늘도 해야 한다.',
+        'title': '매일 증명하십시오.',
+        'desc': '사진으로 인증하십시오.\n핑계는 없습니다. 오늘도 해야 합니다.',
         'color': primaryColor,
         'route': '/about/verify',
       },
       {
         'num': '04',
-        'title': '결과를 받아라',
-        'desc': '완주하면 보증금 전액 반환.\n실패하면? 소각이다.',
+        'title': '마땅한 보상을 받으십시오.',
+        'desc': '완주하면 보증금 전액을 반환하고 특별한 혜택이 주어집니다..\n실패하면? 거기서 끝입니다.',
         'color': primaryColor,
         'route': '/about/settlement',
       },
@@ -507,7 +507,7 @@ class _HowItWorksSection extends StatelessWidget {
           const _SectionLabel('작동 방식'),
           const SizedBox(height: 12),
           const Text(
-            '단순하다.\n그래서 강하다.',
+            '단순합니다.\n그래서 더 강해질 수 있습니다.',
             style: TextStyle(
               fontSize: 34,
               fontWeight: FontWeight.w900,
@@ -517,7 +517,7 @@ class _HowItWorksSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '각 단계를 눌러 자세히 알아보세요.',
+            '각 단계를 눌러 자세히 알아보십시오.',
             style: TextStyle(
               color: Colors.grey[600],
               fontSize: 13,
@@ -683,7 +683,7 @@ class _BurnSection extends StatelessWidget {
           const _SectionLabel('실패 시 처리'),
           const SizedBox(height: 12),
           const Text(
-            '네가 선택한다.\n소각 방식까지.',
+            '당신이 선택합니다.\n소각 방식까지.',
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.w900,
@@ -695,21 +695,21 @@ class _BurnSection extends StatelessWidget {
           const _BurnOption(
             icon: '🔥',
             title: '완전 소각',
-            desc: '보증금이 영원히 사라진다.\n가장 강력한 동기부여. 진짜 사나이의 선택.',
+            desc: '보증금이 영원히 사라집니다.\n가장 강력한 동기부여가 될 수 있습니다.',
             color: primaryColor,
           ),
           const SizedBox(height: 16),
           const _BurnOption(
             icon: '🤝',
             title: '사회 기부',
-            desc: '유니세프, 그린피스 등 선택한 기관에 기부된다.\n내 실패가 세상에 도움이 된다.',
+            desc: '유니세프, 그린피스 등 선택한 기관에 기부됩니다.\n 당신의 실패를 세상을 돕는 데 사용하십시오.',
             color: Colors.teal,
           ),
           const SizedBox(height: 16),
           const _BurnOption(
             icon: '💎',
             title: '크레딧 전환 (최초 1회)',
-            desc: '딱 한 번만 허용된다.\n재도전 시 사용 가능한 크레딧으로 전환.',
+            desc: '딱 한 번만 허용됩니다.\n 실패 시 재도전에 사용 가능한 크레딧으로 전환됩니다.',
             color: Colors.amber,
             badge: '1회 한정',
           ),
@@ -783,11 +783,11 @@ class _ChallengeTypesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final challenges = [
-      {'emoji': '🌅', 'name': '기상 챌린지', 'desc': '매일 아침 일어나는 것조차\n못 하면서 뭘 바라냐.'},
-      {'emoji': '💻', 'name': '커밋 챌린지', 'desc': '개발자라면 매일 코드를 써라.\n잔디가 비면 돈이 탄다.'},
-      {'emoji': '🏋️', 'name': '헬스 챌린지', 'desc': '몸은 거짓말하지 않는다.\n매일 증명해라.'},
-      {'emoji': '📚', 'name': '공부 챌린지', 'desc': '지식은 하루아침에 쌓이지 않는다.\n꾸준함이 전부다.'},
-      {'emoji': '🏃', 'name': '러닝 챌린지', 'desc': '뛰어라. 멈추면 돈이 사라진다.\n그게 전부다.'},
+      {'emoji': '🌅', 'name': '기상 챌린지', 'desc': '매일 아침 일어나는 것조차\n못 하면서 뭘 하겠습니까.'},
+      {'emoji': '💻', 'name': '커밋 챌린지', 'desc': '개발자라면 매일 코드를 쓰십시오.\n잔디가 비면 돈이 탑니다.'},
+      {'emoji': '🏋️', 'name': '헬스 챌린지', 'desc': '몸은 거짓말하지 않습니다.\n매일 증명하십시오.'},
+      {'emoji': '📚', 'name': '공부 챌린지', 'desc': '지식은 하루아침에 쌓이지 않습니다.\n꾸준함이 전부입니다.'},
+      {'emoji': '🏃', 'name': '러닝 챌린지', 'desc': '뛰십시오. 멈추면 돈이 사라집니다.\n그게 전부입니다.'},
     ];
 
     return Padding(
@@ -798,7 +798,7 @@ class _ChallengeTypesSection extends StatelessWidget {
           _SectionLabel('챌린지 종류'),
           const SizedBox(height: 12),
           const Text(
-            '어떤 분야든\n상관없다.',
+            '어떤 분야든\n상관없습니다.',
             style: TextStyle(
               fontSize: 34,
               fontWeight: FontWeight.w900,
@@ -809,7 +809,7 @@ class _ChallengeTypesSection extends StatelessWidget {
           const SizedBox(height: 16),
           // 핵심 대사 3
           Text(
-            '양 떼 속에 숨지 마라.\n포효하는 법을 알려주겠다.',
+            '양 떼 속에 숨지 마십시오.\n포효하는 법을 알려주겠습니다.',
             style: TextStyle(
               fontSize: 15,
               color: Colors.grey[500],
@@ -878,7 +878,7 @@ class _FinalCtaSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            '아직도\n생각만 하냐.',
+            '아직도\n생각만 하고 있습니까?',
             style: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.w900,
@@ -889,7 +889,7 @@ class _FinalCtaSection extends StatelessWidget {
           const SizedBox(height: 20),
           // 핵심 대사 4
           Text(
-            '언제까지 겁쟁이 마냥 도망칠거냐.',
+            '언제까지 겁쟁이 마냥 도망칠겁니까.',
             style: TextStyle(
               fontSize: 18,
               color: primaryColor.withOpacity(0.7),
@@ -899,7 +899,7 @@ class _FinalCtaSection extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           const Text(
-            '야수의 심장을 가진 채 살아라.',
+            '야수의 심장을 가진 채 살아봅시다.',
             style: TextStyle(
               fontSize: 22,
               color: Colors.white,
@@ -928,7 +928,7 @@ class _FinalCtaSection extends StatelessWidget {
           const SizedBox(height: 16),
           Center(
             child: Text(
-              '변명은 필요없다. 결과만 있을 뿐이다.',
+              '변명은 필요없습니다다. 결과만 있을 뿐입니다. 증명하십시오.',
               style: TextStyle(color: primaryColor.withOpacity(0.6), fontSize: 12, fontStyle: FontStyle.italic),
             ),
           ),

@@ -12,6 +12,9 @@ import '../features/about/detail/oath_detail_screen.dart';
 import '../features/about/detail/lock_detail_screen.dart';
 import '../features/about/detail/verify_detail_screen.dart';
 import '../features/about/detail/settlement_detail_screen.dart';
+import '../features/community/community_screen.dart';
+import '../features/community/hall_of_fame_screen.dart';
+import '../features/community/miracle_morning_screen.dart';
 import '../features/mission/mission_model.dart';
 import '../features/auth/auth_provider.dart';
 
@@ -46,6 +49,18 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/oath',
         builder: (context, state) => const OathScreen(),
+      ),
+      GoRoute(
+        path: '/community',
+        builder: (context, state) => const CommunityScreen(),
+      ),
+      GoRoute(
+        path: '/community/hof',
+        builder: (context, state) => const HallOfFameScreen(),
+      ),
+      GoRoute(
+        path: '/community/miracle-morning',
+        builder: (context, state) => const MiracleMorningScreen(),
       ),
       GoRoute(
         path: '/challenge/create',

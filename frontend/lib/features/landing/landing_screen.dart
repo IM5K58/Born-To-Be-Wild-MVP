@@ -9,6 +9,8 @@ class LandingScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(authStateProvider).value;
+    const primaryColor = Color(0xFFCE4257);
+    const secondaryColor = Color(0xFF720026);
 
     return Scaffold(
       backgroundColor: const Color(0xFF0B0F14),
@@ -66,13 +68,13 @@ class LandingScreen extends ConsumerWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Colors.red.shade900.withOpacity(0.6),
+                            secondaryColor.withOpacity(0.6),
                             const Color(0xFF1A1F25),
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
-                        border: Border.all(color: Colors.red.withOpacity(0.3)),
+                        border: Border.all(color: primaryColor.withOpacity(0.3)),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,13 +105,13 @@ class LandingScreen extends ConsumerWidget {
                                 Text(
                                   '자세히 알아보기',
                                   style: TextStyle(
-                                    color: Colors.red.shade300,
+                                    color: primaryColor.withOpacity(0.8),
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 const SizedBox(width: 4),
-                                Icon(Icons.arrow_forward, color: Colors.red.shade300, size: 14),
+                                Icon(Icons.arrow_forward, color: primaryColor.withOpacity(0.8), size: 14),
                               ],
                             ),
                           ),
@@ -144,6 +146,17 @@ class LandingScreen extends ConsumerWidget {
                       onTap: () => context.push('/dashboard'),
                     ),
 
+                    const SizedBox(height: 12),
+
+                    // 커뮤니티 카드 추가
+                    _MenuCard(
+                      icon: Icons.people_outline,
+                      iconColor: primaryColor,
+                      title: '커뮤니티',
+                      subtitle: '명예의 전당 및 테마별 머큐니티 소통',
+                      onTap: () => context.push('/community'),
+                    ),
+
                     const SizedBox(height: 32),
 
                     // 통계 섹션
@@ -176,6 +189,7 @@ class _BloodOathCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -183,15 +197,15 @@ class _BloodOathCard extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: const Color(0xFF1A1F25),
-          border: Border.all(color: Colors.red.withOpacity(0.6), width: 1.5),
+          border: Border.all(color: primaryColor.withOpacity(0.6), width: 1.5),
         ),
         child: Row(
           children: [
             Container(
               width: 56,
               height: 56,
-              color: Colors.red.withOpacity(0.15),
-              child: const Icon(Icons.bloodtype, color: Colors.red, size: 28),
+              color: primaryColor.withOpacity(0.15),
+              child: const Icon(Icons.bloodtype, color: primaryColor, size: 28),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -214,7 +228,7 @@ class _BloodOathCard extends StatelessWidget {
                 ],
               ),
             ),
-            const Icon(Icons.arrow_forward_ios, color: Colors.red, size: 16),
+            const Icon(Icons.arrow_forward_ios, color: primaryColor, size: 16),
           ],
         ),
       ),
@@ -240,7 +254,10 @@ class _MenuCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        debugPrint('MenuCard tapped: $title');
+        onTap();
+      },
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(20),
@@ -281,27 +298,30 @@ class _MenuCard extends StatelessWidget {
 class _HowItWorksSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const primaryColor = Color(0xFFCE4257);
+    const secondaryColor = Color(0xFF720026);
+
     final steps = [
       {
         'icon': '✍️',
         'title': '서약',
         'desc': '챌린지를 선택하고 보증금을 설정합니다',
         'route': '/about/oath',
-        'color': Colors.red,
+        'color': primaryColor,
       },
       {
         'icon': '🔒',
         'title': '잠금',
         'desc': '보증금이 스마트 금고에 잠깁니다',
         'route': '/about/lock',
-        'color': Colors.orange,
+        'color': secondaryColor,
       },
       {
         'icon': '📸',
         'title': '인증',
         'desc': '매일 사진으로 미션을 인증합니다',
         'route': '/about/verify',
-        'color': Colors.amber,
+        'color': primaryColor,
       },
       {
         'icon': '🏆',
